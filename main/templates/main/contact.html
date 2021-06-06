@@ -1,0 +1,110 @@
+{% extends 'basic.html' %}
+{% block css %}
+.contact_form{
+    width:40%;
+    
+}
+{% endblock %}
+
+{% block body %}
+<!--Section: Contact v.2-->
+<section class="mb-4">
+    
+    <!--Section heading-->
+    <h2 class="h1-responsive font-weight-bold text-center my-4">ABOUT ME :<hr><img style="border-radius: 100%;" src="https://django-personal-guitar-website.s3.amazonaws.com/Vinay.JPG" ></h2>
+    <p class="text-center w-responsive mx-auto mb-5">Hi!!!<br>My name is Vinay, I am from Dehradun, 
+        Uttarakand, India.<br>Currently Pursuing Computer 
+    Science Engineering from Graphic Era Hill University, Dehradun.<br><br>
+    I love to play guitar and Whatever I have learn't its thanks to youtube and my college friends.<br><br>
+    I have Created this website myself using Django as a framework.<br><br>
+<strong>You can Search me on Social Media platforms like:    </strong>                 
+                                        <br>
+    <br><strong>Instagram :</strong>  <a href="https://www.instagram.com/vnay_07/?hl=en">Click to follow me on instagram!!<i class="fab fa-instagram"></i></a> <br>
+    <strong>Facebook :</strong> <a href="https://www.facebook.com/vnay.konswal/">Click To send friend Request!!<i class="fab fa-facebook-f"></i></a>
+        <br>
+        <strong>Youtube :</strong> 
+        <a href="https://www.youtube.com/channel/UC4bSsYhvanlQwgWL4iVqSqA">Click to subscribe my channel!!<i class="fab fa-youtube"></i></a><br>
+        <strong>Linkedin:</strong>  <a href="https://www.linkedin.com/in/vinay-konswal-757770195/">Click To send friend Request!!<i class="fab fa-linkedin"></i></a><br>
+    <br>Thank you!!!<hr>
+    </p>
+    <h2 class="h1-responsive font-weight-bold text-center my-4">Contact Me</h2>
+    <!--Section description-->
+    <p class="text-center w-responsive mx-auto mb-5">Do you have any questions?
+         Please do not hesitate to contact us directly. Our team will come back to you within
+        a matter of hours to help you.</p>
+
+        <!--Grid column-->
+        <div class="container col-md-9 mb-md-0 mb-5">
+            <form id="contact-form" action="{% url 'contact' %}" method="POST">{% csrf_token %}
+                
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <div class="md-form mb-0">
+                            
+                            <input type="text" id="name" placeholder="Enter your name"
+                             name="name" class="form-control mb-3" required>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="md-form mb-0">
+                            
+                            <input type="text" id="email" placeholder="Enter your email" 
+                            name="email" class="form-control mb-3" required>
+                            
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="md-form mb-0">
+                            
+                            <input type="text" id="subject"
+                             placeholder="Topic/Subject of message below..." 
+                             name="subject" class="form-control mb-3" required>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <!--Grid column-->
+                    <div class="col-md-8">
+                        <div class="md-form">
+                            <textarea type="text" id="message" 
+                            placeholder="Message here!!!" name="message" style="margin-top: 0px; margin-bottom: 0px; height: 247px;"
+                            rows="2" class="form-control md-textarea mb-3" required></textarea>  
+                        </div>
+                        <BUtton class="btn btn-primary" type="submit" >Send</BUtton>
+                    </div>
+                </div>
+                <!--Grid row-->
+
+            </form>   
+        </div>
+        <!--Grid column-->
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}>
+                 <h3 style="text-align: center;">{{ message }} </h3>
+                </li>
+        
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+</section>
+
+{% endblock body %}

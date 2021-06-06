@@ -1,0 +1,137 @@
+{% extends 'basic.html' %}
+
+{% block media_css %}
+  .logo_1{
+    
+    padding:0%;
+    margin-top:5%;
+    margin-left:17%;
+    margin-bottom:10%;
+    
+  }
+  .logo_1 img{
+    height:30px;
+     width:30px;
+  }
+  .logo_1 span{
+    font-size:30px;
+  }
+  .container{
+    
+  }
+  .para_1{
+    font_size:10px;
+    width:100%;
+    
+  }
+  .blockquote p{
+    font-family: Optima;
+    font-size: 100px;
+  }
+  .web_about{
+    text-align: center;
+    margin-left: 0%;
+    margin-right: 0%; 
+    margin-top: 5%;
+  }
+{% endblock %}
+
+  {% block css %}
+    .blockquote p{
+      font-family: Optima;
+      font-size: 80px;
+    }
+    .web_about{
+      text-align: center;
+      margin-left: 0%;
+      margin-right: 0%; 
+      margin-top: 5%;
+    }
+    .logo_1 img{
+      height:50px;
+       width:50px;
+    }
+
+  {% endblock %}
+      
+  {% block body %} 
+    <!--Nav bar code end-->
+    <div class="container " style="margin-top: -2%;">
+      <h1 class="logo_1" style="text-align: center;"><img src="https://django-personal-guitar-website.s3.amazonaws.com/images/1.png">
+        <span class="font_1" style="font-family: Brush Script MT;">Club-Nascent</span></h1>
+      <!-- Top Images-->
+      <!-- End Top Images-->
+      <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" >
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <a href="#"><img src="https://django-personal-guitar-website.s3.amazonaws.com/images/7.jpg" class="d-block w-100" alt="..."></a>
+            <div class="carousel-caption d-none d-md-block">
+              <a href="{% url 'courses' %}">Course</a>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <a href="#"><img src="https://django-personal-guitar-website.s3.amazonaws.com/images/5.jpg" class="d-block w-100 " alt="..."></a>
+            <div class="carousel-caption d-none d-md-block">
+              <a href="{% url 'courses' %}">Songs</a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <a href="#"><img src="https://django-personal-guitar-website.s3.amazonaws.com/images/8.jpg" class="d-block w-100 " alt="..."></a>
+            <div class="carousel-caption d-none d-md-block">
+              <a href="{% url 'contact' %}">About</a>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <blockquote class="para_1 text-center  mt-3 " >
+        <p class="para_1 mb-0">The secret of getting ahead is getting started. </p>
+        <footer class="blockquote-footer ">Mark Twain</footer>
+      </blockquote>
+      <!--About this website-->
+      <div class="web_about" style="">
+        <h1 style="font-family: Brush Script MT;"><span style="font-family: garamond;">Welcome to </span>Club-Nascent
+          {% if user.is_authenticated %}
+          <span style="font-family: garamond;">- ({{ user.get_username }})</span>
+          {% endif %}
+        </h1>
+        <p style="font-family: Cambria;font-size: 20px;"><span style="font-size: 35px;">H</span>i,
+           I welcome you to <span style="font-family: Brush Script MT;">Club-Nascent</span>, where you can find the chords and tabs of the songs
+          that you love. And I will try to help you in your musical journey.<br>
+          There are few <a href="{% url 'courses' %}">courses</a> which are categorised on the bases of your level.
+          Feel Free to join these free <a href="{% url 'courses' %}">courses</a>. <br>These <a href="{% url 'courses' %}">courses</a> will eventually help you grow.<br>
+          {% if user.is_authenticated %}
+          <h2 style="color: green;">Thanks For Joining Here.</h3>
+          {% else %}
+          And Don't Forget to <a href="{% url 'login' %}">login</a> with us.
+          {% endif %}
+        </p>
+        <img src="https://django-personal-guitar-website.s3.amazonaws.com/images/9.jpg" class="d-block w-100" style="opacity: .9;">
+        <h1 style="font-family: garamond;margin-top: 5%;"> Join <span style="font-family: Brush Script MT;">Club-Nascent</span>, and Lets play </h1>
+        {% if user.is_authenticated %}
+        <button type="button" class="btn btn-primary btn-lg">
+          <a href="{% url 'logout' %}" style="color: white;"> Log Out</a></li>
+        </button>
+        {% else %}
+        <button type="button" class="btn btn-primary btn-lg ">
+          <a href="{% url 'login' %}" style="color: white;">Log in</a></li>
+        </button>
+        {% endif %}
+      </div>
+    </div>
+    
+    {% endblock %}
+
+    {% block js %}{% endblock %}

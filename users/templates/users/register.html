@@ -1,0 +1,30 @@
+{% extends 'basic.html' %}
+{% load crispy_forms_tags %}
+{% block media_css %} .container{
+    margin-top:0%;
+    text-align:center;
+}
+ {% endblock %}
+{% block content %}
+    <div class="container content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Join Today</legend>
+               {{form|crispy}}
+            </fieldset>
+            <div class="form-group">
+                <button class="btm btn-outline-info" type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already have an account?
+                <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+            </small>
+        </div>
+        <br>
+        <h4>Please check your email <span style="color: Red;">Spam box</span> also, if you havent recieved mail in inbox!</h4>
+        
+    </div>
+{% endblock content %}
